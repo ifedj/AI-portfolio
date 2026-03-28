@@ -93,19 +93,33 @@
 
   .badge-row {
     display: flex;
-    gap: 10px;
-    margin-top: 24px;
+    gap: 0;
+    margin-top: 16px;
     flex-wrap: wrap;
   }
 
   .badge {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 100px;
-    padding: 6px 14px;
-    font-size: 12px;
+    font-size: 13px;
     color: var(--muted);
-    letter-spacing: 0.5px;
+    letter-spacing: 0.3px;
+    padding: 0;
+    background: none;
+    border: none;
+  }
+
+  .badge-row {
+    display: flex;
+    gap: 0;
+    flex-wrap: wrap;
+  }
+
+  .badge::after {
+    content: " · ";
+    color: var(--border);
+  }
+
+  .badge:last-child::after {
+    content: "";
   }
 
   /* MOBILE CONTACT BAR */
@@ -739,7 +753,7 @@
 </header>
 
 <div class="mobile-contact">
-  <a href="mailto:idj@mit.edu">idj@mit.edu</a>
+  <a href="mailto:ifedj@mit.edu">ifedj@mit.edu</a>
   <span>·</span>
   <a href="https://github.com/ifedj">GitHub</a>
   <span>·</span>
@@ -764,9 +778,9 @@
   <div class="projects-grid">
     <div class="project-card">
       <div class="project-number">Platform</div>
-      <h3 class="project-title">0 to 50K Users, Consumer Diagnostics</h3>
-      <p class="project-subtitle">CEO & Co-Founder · 2021–Present</p>
-      <p class="project-desc">During COVID-19, millions of Nigerians needed urgent lab tests but feared hospital waiting rooms. I validated a home diagnostics platform starting with 20 phone calls and a $40 Upwork website listing 5 tests. The concierge MVP deliberately chose the highest-signal pilot category over the largest market, expanding from 5 to 30+ test categories using validated demand signals rather than assumption.</p>
+      <h3 class="project-title">0 to 10K Users, Consumer Diagnostics</h3>
+      
+      <p class="project-desc">I owned the full product lifecycle: discovery, roadmap, prioritisation, and iteration. During COVID-19, I identified the gap through user research: millions of Nigerians needed urgent lab tests but feared hospitals. I ran the validation myself: 20 user interviews, a $40 Upwork website, 5 tests chosen for signal clarity over market size. Every category expansion was driven by a repeatable PMF template I built in the pilot phase.</p>
       <div class="tag-row">
         <span class="tag">0→1 Product Strategy</span>
         <span class="tag">Concierge MVP</span>
@@ -774,7 +788,7 @@
         <span class="tag">Nigeria</span>
       </div>
       <div class="metrics-row">
-        <div class="metric"><span class="num">50K</span><span class="label">Peak Users</span></div>
+        <div class="metric"><span class="num">10K</span><span class="label">Verified Users</span></div>
         <div class="metric"><span class="num">85%</span><span class="label">NPS</span></div>
         <div class="metric"><span class="num">30+</span><span class="label">Test Categories</span></div>
         <div class="metric"><span class="num">$2M+</span><span class="label">Seed Funding</span></div>
@@ -791,8 +805,8 @@
     <div class="project-card">
       <div class="project-number">AI Interpretation Engine</div>
       <h3 class="project-title">Biomarker-to-Patient Translation Layer</h3>
-      <p class="project-subtitle">Human-in-the-loop AI · Clinician Review Gate</p>
-      <p class="project-desc">Built the AI engine that translates 50+ raw biomarkers into patient-friendly health reports. Designed with a human-in-the-loop gate, every AI-generated report requires clinician sign-off before patient release. Balancing AI speed with clinical accountability at scale.</p>
+      
+      <p class="project-desc">I defined the product spec, designed the UX, and owned the decision to put a clinician review gate between every AI output and the patient. That call (AI generates, clinician approves, patient receives) was a product decision about trust, not a technical constraint. I also defined what "good" looked like for each output: clinical accuracy, appropriate tone, correct action plan.</p>
       <div class="tag-row">
         <span class="tag">AI Interpretation</span>
         <span class="tag">Human-in-the-Loop</span>
@@ -820,8 +834,8 @@
         <div>
           <div class="project-number">Product</div>
           <h3 class="project-title">95% Accuracy, Menstrual Cycle Prediction</h3>
-          <p class="project-subtitle">RAG Architecture · WhatsApp · Proprietary Dataset</p>
-          <p class="project-desc">60% of Healthtracka users were women. We had 100K+ proprietary lab data points sitting idle with no existing model trained on African women's health data. I conducted 100 user interviews and discovered women didn't want another app, they had feature phones, limited storage, and trusted WhatsApp already.</p>
+          
+          <p class="project-desc">60% of our users were women with recurring, preventable health issues and 100K+ proprietary lab data points sitting idle. I ran 100 user interviews to define the product. The WhatsApp decision was mine: not a technical default, but a deliberate product call based on what I heard: feature phones, limited storage, and existing trust in WhatsApp over any new app.</p>
           <p class="project-desc">Architectural decision: retrieval-first RAG with strict guardrails. The system retrieves; the LLM presents. It never invents. This constraint was critical in a high-stakes health context where hallucination rates in 2023 were unacceptable.</p>
           <div class="tag-row">
             <span class="tag">RAG Architecture</span>
@@ -875,8 +889,8 @@
 <!-- RECENT PROJECTS -->
 <div class="section" id="projects">
   <div class="section-label">03, Independent AI Projects</div>
-  <h2 class="section-title">Recent Builds</h2>
-  <p class="section-intro">Three AI products shipped in a single week, each solving a real personal problem using a distinct architecture. Demonstrating full-stack AI product thinking from system design through evaluation.</p>
+  <h2 class="section-title">Recent Projects</h2>
+  <p class="section-intro">I shipped three AI products in a single week, each solving a real problem using a different architecture.</p>
 
   <div class="mini-projects">
     <div class="mini-card">
@@ -958,7 +972,6 @@
 </footer>
 
 <script>
-// Smooth scroll nav
 document.querySelectorAll('nav a').forEach(a => {
   a.addEventListener('click', e => {
     e.preventDefault();
@@ -969,34 +982,22 @@ document.querySelectorAll('nav a').forEach(a => {
   });
 });
 
-// Active nav on scroll
 const sections = document.querySelectorAll('.section[id]');
 window.addEventListener('scroll', () => {
   let current = '';
-  sections.forEach(s => {
-    if (window.scrollY >= s.offsetTop - 100) current = s.id;
-  });
+  const scrollBottom = window.scrollY + window.innerHeight;
+  const pageHeight = document.documentElement.scrollHeight;
+  if (scrollBottom >= pageHeight - 50) {
+    current = sections[sections.length - 1].id;
+  } else {
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 150) current = s.id;
+    });
+  }
   document.querySelectorAll('nav a').forEach(a => {
     a.classList.toggle('active', a.getAttribute('href') === '#' + current);
   });
 });
-
-// Scroll reveal animations
-const revealElements = document.querySelectorAll('.section, .project-card, .mini-card, .skill-group, .metric, .eval-layer');
-revealElements.forEach((el, i) => {
-  el.classList.add('reveal');
-  el.style.transitionDelay = (i % 4) * 0.08 + 's';
-});
-
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-    }
-  });
-}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
 
 </body>
