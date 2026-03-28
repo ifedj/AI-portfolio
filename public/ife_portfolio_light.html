@@ -670,15 +670,50 @@
 
   @media (max-width: 900px) {
     header, .section, footer { padding-left: 24px; padding-right: 24px; }
-    nav { padding-left: 24px; padding-right: 24px; }
+    nav { padding: 0 16px; }
+    nav ul { gap: 0; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+    nav ul::-webkit-scrollbar { display: none; }
+    nav ul li a { padding: 16px 14px; font-size: 12px; white-space: nowrap; }
     .projects-grid, .mini-projects, .skills-grid { grid-template-columns: 1fr; }
     .project-card.featured .card-inner { grid-template-columns: 1fr; }
+    .project-card.featured { padding: 32px 24px; }
     .header-right { display: none; }
     .mobile-contact { display: flex; }
     .badge-row { margin-top: 16px; }
-    .metrics-row { flex-wrap: wrap; }
+    .metrics-row { flex-wrap: wrap; gap: 16px; }
     footer { flex-direction: column; gap: 24px; text-align: center; }
     footer .links { flex-wrap: wrap; justify-content: center; }
+    .section { padding-top: 56px; padding-bottom: 56px; }
+    .project-card { padding: 28px 24px; }
+    .mini-card { padding: 28px 24px; }
+    .skill-group { padding: 28px 24px; }
+  }
+
+  @media (max-width: 480px) {
+    header { padding: 40px 20px 32px; flex-direction: column; align-items: flex-start; }
+    .header-left h1 { font-size: clamp(32px, 9vw, 48px); }
+    .header-left .tagline { font-size: 14px; max-width: 100%; }
+    nav ul li a { padding: 14px 12px; font-size: 11px; letter-spacing: 0.4px; }
+    .section { padding: 40px 20px; }
+    .section-title { font-size: clamp(22px, 6vw, 32px); }
+    .section-intro { font-size: 14px; margin-bottom: 32px; }
+    .project-card { padding: 24px 20px; }
+    .project-card.featured { padding: 24px 20px; }
+    .project-title { font-size: 20px; }
+    .project-desc { font-size: 14px; }
+    .metrics-row { gap: 12px; }
+    .metric .num { font-size: 26px; }
+    .mini-card { padding: 24px 20px; }
+    .skill-group { padding: 24px 20px; }
+    footer { padding: 40px 20px; }
+    footer .links { gap: 12px; }
+    footer .links .cta-link { width: 100%; text-align: center; padding: 12px 20px; }
+    .eval-layer { flex-direction: column; gap: 8px; }
+    .badge-row { gap: 8px; }
+    .badge { font-size: 11px; padding: 5px 12px; }
+    .tag-row { gap: 6px; }
+    .tag { font-size: 11px; padding: 4px 8px; }
+    .mobile-contact { font-size: 12px; gap: 12px; padding: 10px 20px; }
   }
 </style>
 </head>
